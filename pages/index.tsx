@@ -504,7 +504,6 @@ export default function HealthCheckApp() {
       if (!response.body) {
         return;
       }
-
       // 3) stream handling
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
