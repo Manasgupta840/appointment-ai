@@ -492,6 +492,7 @@ export default function HealthCheckApp() {
         i === arr.length - 1 ? { ...m, id: streamMsgId } : m
       )
     );
+    
 
     try {
       const response = await addMessage(text, selectedService);
