@@ -502,8 +502,11 @@ export default function HealthCheckApp() {
 
       // If the server did NOT stream, fall back to JSON once.
       if (!response.body) {
+        // const result = await response.json();
+        // handleFinalResult(result, streamMsgId);
         return;
       }
+
       // 3) stream handling
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
