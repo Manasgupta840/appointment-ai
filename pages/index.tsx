@@ -493,7 +493,6 @@ export default function HealthCheckApp() {
       )
     );
     
-
     try {
       const response = await addMessage(text, selectedService);
 
