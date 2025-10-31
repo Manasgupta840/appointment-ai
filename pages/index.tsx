@@ -23,6 +23,7 @@ import {
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import TypingDots from "@/components/ui/TypingIndicator";
+import { addMessage } from "@/services/appointment.service";
 
 // Health services configuration
 const HEALTH_SERVICES = [
@@ -491,23 +492,9 @@ export default function HealthCheckApp() {
         i === arr.length - 1 ? { ...m, id: streamMsgId } : m
       )
     );
-
+    
     try {
-      const response = await fetch(
-        "https://manasgupta840.app.n8n.cloud/webhook-test/message",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userId: "user-1",
-            message: text,
-            requestId: "12345",
-            service: selectedService,
-            // If your backend needs a hint to stream, pass a flag:
-            // stream: true,
-          }),
-        }
-      );
+      const response = await addMessage(text, selectedService);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
